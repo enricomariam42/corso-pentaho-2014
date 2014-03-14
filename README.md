@@ -1,4 +1,4 @@
-# Questo repository � per il corso Pentaho di marzo 2014
+﻿# Questo repository è per il corso Pentaho di marzo 2014
 
 Condividete qui i file creati (ETL, report, ...)
 
