@@ -10,9 +10,14 @@
     <directory>&#x2f;</directory>
     <parameters>
         <parameter>
+            <name>p_filtro_name</name>
+            <default_value>pippo</default_value>
+            <description>filtro per il campo name</description>
+        </parameter>
+        <parameter>
             <name>p_nome_file_input</name>
             <default_value>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x2f;files&#x2f;customers-100.txt</default_value>
-            <description>nome completo di percorso per il file di imput</description>
+            <description>nome completo di percorso per il file di input</description>
         </parameter>
     </parameters>
     <log>
@@ -78,10 +83,10 @@
   </info>
   <notepads>
     <notepad>
-      <note>Filtra i record in base ad un valore fisso&#xd;&#xa;con un parametro per il nome del file di input</note>
+      <note>Filtra i record in base ad un valore del parametro&#xd;&#xa;con un parametro per il nome del file di input</note>
       <xloc>63</xloc>
       <yloc>24</yloc>
-      <width>266</width>
+      <width>289</width>
       <heigth>40</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -116,12 +121,13 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Text file input</from><to>Filter rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter rows</from><to>maggiori uguali m</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter rows</from><to>minori di m</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows name &#x3e;&#x3d; parametro</from><to>maggiori uguali al parametro</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows name &#x3e;&#x3d; parametro</from><to>minori del parametro</to><enabled>Y</enabled> </hop>
+  <hop> <from>Text file input</from><to>Get Variables p_filtro_name</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get Variables p_filtro_name</from><to>Filter rows name &#x3e;&#x3d; parametro</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Filter rows</name>
+    <name>Filter rows name &#x3e;&#x3d; parametro</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -131,20 +137,20 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>maggiori uguali m</send_true_to>
-<send_false_to>minori di m</send_false_to>
+<send_true_to>maggiori uguali al parametro</send_true_to>
+<send_false_to>minori del parametro</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
  <leftvalue>name</leftvalue>
  <function>&#x3e;&#x3d;</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>m</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+ <rightvalue>filtro_name</rightvalue>
+ </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>271</xloc>
-      <yloc>139</yloc>
+      <xloc>447</xloc>
+      <yloc>140</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -376,14 +382,14 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>92</xloc>
-      <yloc>139</yloc>
+      <xloc>100</xloc>
+      <yloc>140</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>maggiori uguali m</name>
+    <name>maggiori uguali al parametro</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -395,14 +401,14 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>460</xloc>
+      <xloc>647</xloc>
       <yloc>220</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>minori di m</name>
+    <name>minori del parametro</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -414,8 +420,41 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>460</xloc>
+      <xloc>647</xloc>
       <yloc>60</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get Variables p_filtro_name</name>
+    <type>GetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>filtro_name</name>
+        <variable>&#x24;&#x7b;p_filtro_name&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>256</xloc>
+      <yloc>140</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
