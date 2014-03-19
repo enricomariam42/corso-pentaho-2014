@@ -2,12 +2,18 @@
 <transformation>
   <info>
     <name>text_file_input</name>
-    <description/>
+    <description>Trasformazione di esempio con file di testo in input</description>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
+        <parameter>
+            <name>p_nome_file_input</name>
+            <default_value>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x2f;files&#x2f;customers-100.txt</default_value>
+            <description>nome completo di percorso per il file di imput</description>
+        </parameter>
     </parameters>
     <log>
 <trans-log-table><connection/>
@@ -72,11 +78,11 @@
   </info>
   <notepads>
     <notepad>
-      <note>Filtra i record in base ad un valore fisso</note>
+      <note>Filtra i record in base ad un valore fisso&#xd;&#xa;con un parametro per il nome del file di input</note>
       <xloc>63</xloc>
       <yloc>24</yloc>
-      <width>237</width>
-      <heigth>25</heigth>
+      <width>266</width>
+      <heigth>40</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -181,7 +187,7 @@
     <encoding/>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x2f;files&#x2f;customers-100.txt</name>
+      <name>&#x24;&#x7b;p_nome_file_input&#x7d;</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
