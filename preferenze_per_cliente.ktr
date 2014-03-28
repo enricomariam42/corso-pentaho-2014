@@ -119,6 +119,8 @@
   <hop> <from>Sort rows</from><to>Table output</to><enabled>Y</enabled> </hop>
   <hop> <from>Memory Group by</from><to>Database lookup nome_categoria</to><enabled>Y</enabled> </hop>
   <hop> <from>Database lookup nome_categoria</from><to>Sort rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>Database lookup nome_categoria</from><to>categorie non trovate</to><enabled>Y</enabled> </hop>
+  <hop> <from>categorie non trovate</from><to>Copy rows to result</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Memory Group by</name>
@@ -617,7 +619,57 @@
       </GUI>
     </step>
 
+  <step>
+    <name>categorie non trovate</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>880</xloc>
+      <yloc>440</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Copy rows to result</name>
+    <type>RowsToResult</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>880</xloc>
+      <yloc>540</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step_error_handling>
+      <error>
+        <source_step>Database lookup nome_categoria</source_step>
+        <target_step>categorie non trovate</target_step>
+        <is_enabled>Y</is_enabled>
+        <nr_valuename/>
+        <descriptions_valuename/>
+        <fields_valuename/>
+        <codes_valuename/>
+        <max_errors/>
+        <max_pct_errors/>
+        <min_pct_rows/>
+      </error>
   </step_error_handling>
    <slave-step-copy-partition-distribution>
 </slave-step-copy-partition-distribution>
