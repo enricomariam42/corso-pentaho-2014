@@ -497,6 +497,12 @@
       <unique_rows>N</unique_rows>
     <fields>
       <field>
+        <name>customer_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+      <field>
         <name>nr_film_noleggiati</name>
         <ascending>N</ascending>
         <case_sensitive>N</case_sensitive>
