@@ -129,6 +129,7 @@
   <hop> <from>Generate Rows</from><to>Write to log</to><enabled>Y</enabled> </hop>
   <hop> <from>Get Variables</from><to>Split field to rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Split field to rows</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Table input rental</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Copy rows to result</name>
@@ -504,10 +505,10 @@
            <schema_name/>
            </partitioning>
     <connection>sakila</connection>
-    <sql>SELECT&#xd;&#xa;  rental_id&#xd;&#xa;, rental_date&#xd;&#xa;, inventory_id&#xd;&#xa;, customer_id&#xd;&#xa;, return_date&#xd;&#xa;, staff_id&#xd;&#xa;, last_update&#xd;&#xa;FROM rental&#xd;&#xa;where customer_id&#x3d;&#x24;&#x7b;p_codice_cliente&#x7d;&#xd;&#xa;order by inventory_id</sql>
+    <sql>SELECT&#xd;&#xa;  rental_id&#xd;&#xa;, rental_date&#xd;&#xa;, inventory_id&#xd;&#xa;, customer_id&#xd;&#xa;, return_date&#xd;&#xa;, staff_id&#xd;&#xa;, last_update&#xd;&#xa;FROM rental&#xd;&#xa;where customer_id&#x3d;&#x3f;&#xd;&#xa;order by inventory_id</sql>
     <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
+    <lookup>Select values</lookup>
+    <execute_each_row>Y</execute_each_row>
     <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
