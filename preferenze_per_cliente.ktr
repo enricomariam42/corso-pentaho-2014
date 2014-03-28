@@ -142,6 +142,9 @@
       <give_back_row>N</give_back_row>
       <group>
         <field>
+          <name>customer_id</name>
+        </field>
+        <field>
           <name>category_id</name>
         </field>
       </group>
@@ -245,6 +248,18 @@
       <sheetname/>
     </template>
     <fields>
+      <field>
+        <name>customer_id</name>
+        <type>Integer</type>
+        <format/>
+        <title>customer_id</title>
+        <titleStyleCell/>
+        <styleCell/>
+        <commentField/>
+        <commentAuthorField/>
+        <formula>N</formula>
+        <hyperlinkField/>
+      </field>
       <field>
         <name>category_id</name>
         <type>Integer</type>
