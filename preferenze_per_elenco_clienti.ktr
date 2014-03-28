@@ -10,8 +10,8 @@
     <directory>&#x2f;</directory>
     <parameters>
         <parameter>
-            <name>p_codice_cliente</name>
-            <default_value>345</default_value>
+            <name>p_elenco_clienti</name>
+            <default_value>345&#x3b;333&#x3b;555</default_value>
             <description/>
         </parameter>
     </parameters>
@@ -712,7 +712,7 @@
       <displayHeader>Y</displayHeader>
       <limitRows>N</limitRows>
       <limitRowsNumber>0</limitRowsNumber>
-      <logmessage>Codice cliente&#x3a;&#x27;&#x24;&#x7b;p_codice_cliente&#x7d;&#x27;</logmessage>
+      <logmessage>Codice cliente&#x3a;&#x27;&#x24;&#x7b;p_elenco_clienti&#x7d;&#x27;</logmessage>
     <fields>
       </fields>
      <cluster_schema/>
