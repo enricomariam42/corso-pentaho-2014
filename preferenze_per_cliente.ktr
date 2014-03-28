@@ -9,6 +9,11 @@
     <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
+        <parameter>
+            <name>p_codice_cliente</name>
+            <default_value>345</default_value>
+            <description/>
+        </parameter>
     </parameters>
     <log>
 <trans-log-table><connection/>
@@ -382,11 +387,11 @@
            <schema_name/>
            </partitioning>
     <connection>sakila</connection>
-    <sql>SELECT&#xd;&#xa;  rental_id&#xd;&#xa;, rental_date&#xd;&#xa;, inventory_id&#xd;&#xa;, customer_id&#xd;&#xa;, return_date&#xd;&#xa;, staff_id&#xd;&#xa;, last_update&#xd;&#xa;FROM rental&#xd;&#xa;where customer_id&#x3d;345&#xd;&#xa;order by inventory_id</sql>
+    <sql>SELECT&#xd;&#xa;  rental_id&#xd;&#xa;, rental_date&#xd;&#xa;, inventory_id&#xd;&#xa;, customer_id&#xd;&#xa;, return_date&#xd;&#xa;, staff_id&#xd;&#xa;, last_update&#xd;&#xa;FROM rental&#xd;&#xa;where customer_id&#x3d;&#x24;&#x7b;p_codice_cliente&#x7d;&#xd;&#xa;order by inventory_id</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
+    <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
